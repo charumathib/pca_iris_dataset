@@ -7,7 +7,9 @@ iris = datasets.load_iris()
 
 # We first identify the dimentionality of the dataset and the variables being measured
 print(" ----- MEASURED VARIABLES ----- ")
-print(iris.feature_names)
+
+orig_df = pd.DataFrame(iris.data, columns=iris.feature_names)
+print(orig_df)
 
 # Next, we standardize the data by...
 # 1. Calculating the sample mean of each variable
@@ -54,14 +56,14 @@ for row in iris.data:
         else:
             petal_width_sigma += (row[col] - petal_width_mu) ** 2
 
-sepal_length_sigma **= 1/2
 sepal_length_sigma /= len(iris.data)
-sepal_width_sigma **= 1/2
+sepal_length_sigma **= 1/2
 sepal_width_sigma /= len(iris.data)
-petal_length_sigma **= 1/2
+sepal_width_sigma **= 1/2
 petal_length_sigma /= len(iris.data)
-petal_width_sigma **= 1/2
+petal_length_sigma **= 1/2
 petal_width_sigma /= len(iris.data)
+petal_width_sigma **= 1/2
 
 print(" ----- SAMPLE STANDARD DEVIATIONS ----- ")
 
@@ -85,6 +87,10 @@ for row in iris.data:
         else:
             row[col] -= petal_width_mu
             row[col] /= petal_width_sigma
+
+print(" ----- STANDARDIZED OBSERVATION MATRIX ----- ")
+data_df = pd.DataFrame(iris.data)
+print(data_df)
 
 # Calculate the covariance matrix
 print(" ----- COVARIANCE MATRIX ----- ")
@@ -127,7 +133,7 @@ for row in range(0, 150):
     proj_mat[row].append(iris.target_names[iris.target[row]])
 
 df = pd.DataFrame(proj_mat, iris.target, columns=[
-                  'Principal Component 1', 'Principal Component 2', 'Iris Species'])
+    'Principal Component 1', 'Principal Component 2', 'Iris Species'])
 
 print(df)
 
