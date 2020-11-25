@@ -55,13 +55,13 @@ for row in iris.data:
             petal_width_sigma += (row[col] - petal_width_mu) ** 2
 
 sepal_length_sigma **= 1/2
-sepal_length_sigma /= len(iris.data) - 1
+sepal_length_sigma /= len(iris.data)
 sepal_width_sigma **= 1/2
-sepal_width_sigma /= len(iris.data) - 1
+sepal_width_sigma /= len(iris.data)
 petal_length_sigma **= 1/2
-petal_length_sigma /= len(iris.data) - 1
+petal_length_sigma /= len(iris.data)
 petal_width_sigma **= 1/2
-petal_width_sigma /= len(iris.data) - 1
+petal_width_sigma /= len(iris.data)
 
 print(" ----- SAMPLE STANDARD DEVIATIONS ----- ")
 
